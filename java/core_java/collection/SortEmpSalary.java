@@ -1,0 +1,62 @@
+package com.collection;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class SortEmpSalary implements Comparator<Emp>{
+
+	public int compare(Emp e1, Emp e2) {
+		int value = 0;
+		
+		if(e1.getSalary() > e2.getSalary()) {
+			value = 1;
+		}else if(e1.getSalary() < e2.getSalary()) {
+			value = -1;
+		}else if(e1.getSalary() == e2.getSalary()) {
+			value = 0;
+		}
+		
+		return value;
+	}
+
+	public static void main(String[] args) {		
+		Emp e1 = new Emp();
+		e1.setEid(1);
+		e1.setEname("Dhvanit");
+		e1.setSalary(24000);
+	
+		Emp e2 = new Emp();
+		e2.setEid(2);
+		e2.setEname("Tejal");
+		e2.setSalary(21000);
+	
+		Emp e3 = new Emp();
+		e3.setEid(3);
+		e3.setEname("Priyanka");
+		e3.setSalary(20000);
+	
+		Emp e4 = new Emp();
+		e4.setEid(4);
+		e4.setEname("Heer");
+		e4.setSalary(35000);
+	
+		Emp e5 = new Emp();
+		e5.setEid(5);
+		e5.setEname("Het");
+		e5.setSalary(15000);
+	
+		List<Emp> list = new ArrayList<Emp>();
+		list.add(e1);
+		list.add(e2);
+		list.add(e3);
+		list.add(e4);
+		list.add(e5);
+	
+		Collections.sort(list, new SortEmpSalary());
+		for(Emp e: list) {
+			System.out.println("EID : " + e.getEid() + " ENAME : " +e.getEname() + " ESALARY : " + e.getSalary());
+		}
+	}
+}
